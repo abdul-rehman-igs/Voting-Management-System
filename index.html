@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PAK BRITISH VOTING MANAGEMENT SYSTEM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>PAK BRITISH VOTING MANAGEMENT SYSTEM</h1>
+    <img src="school_logo.png" alt="School Logo" class="logo">
+  </div>
+
+  <div class="container">
+    <!-- President -->
+    <section class="category" data-category="President">
+      <h2>President</h2>
+      <button onclick="vote('President','Ali')">🗳️ Ali</button>
+      <button onclick="vote('President','Ahmed')">🗳️ Ahmed</button>
+      <button onclick="vote('President','Sara')">🗳️ Sara</button>
+    </section>
+
+    <!-- Head Boy -->
+    <section class="category" data-category="Head Boy">
+      <h2>Head Boy</h2>
+      <button onclick="vote('Head Boy','Bilal')">🗳️ Bilal</button>
+      <button onclick="vote('Head Boy','Usman')">🗳️ Usman</button>
+    </section>
+
+    <!-- Head Girl -->
+    <section class="category" data-category="Head Girl">
+      <h2>Head Girl</h2>
+      <button onclick="vote('Head Girl','Ayesha')">🗳️ Ayesha</button>
+      <button onclick="vote('Head Girl','Fatima')">🗳️ Fatima</button>
+    </section>
+
+    <!-- House Captains -->
+    <section class="category" data-category="House Captains">
+      <h2>House Captains</h2>
+      <button onclick="vote('House Captains','Red - Hamza')">🟥 Hamza</button>
+      <button onclick="vote('House Captains','Blue - Sana')">🟦 Sana</button>
+      <button onclick="vote('House Captains','Green - Arsalan')">🟩 Arsalan</button>
+      <button onclick="vote('House Captains','Yellow - Hira')">🟨 Hira</button>
+    </section>
+
+    <!-- Prefects -->
+    <section class="category" data-category="Prefects">
+      <h2>Prefects (Choose Multiple)</h2>
+      <button onclick="vote('Prefects','Omar')">⭐ Omar</button>
+      <button onclick="vote('Prefects','Hassan')">⭐ Hassan</button>
+      <button onclick="vote('Prefects','Iqra')">⭐ Iqra</button>
+      <button onclick="vote('Prefects','Laiba')">⭐ Laiba</button>
+      <button onclick="vote('Prefects','Zainab')">⭐ Zainab</button>
+    </section>
+  </div>
+
+  <div class="footer">
+    <button onclick="downloadCSV()">📥 Download Votes (CSV)</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

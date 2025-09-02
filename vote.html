@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VOTING MANAGEMENT SYSTEM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('school-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #fefefe;
+      margin-top: 10px;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto;
+      height: 100px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .category {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #007BFF;
+      color: #fff;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img src="school-logo.png" alt="School Logo" class="logo">
+
+  <!-- Title -->
+  <h1>VOTING MANAGEMENT SYSTEM</h1>
+
+  <div class="container">
+    <!-- Password Section -->
+    <div id="passwordSection">
+      <h3>Enter Teacher Password to Start Voting:</h3>
+      <input type="password" id="passwordInput" placeholder="Enter password">
+      <button onclick="unlockVoting()">Unlock Voting</button>
+    </div>
+
+    <!-- Voting Section -->
+    <form id="votingForm" class="hidden">
+      <div class="category">
+        <h3>President</h3>
+        <label><input type="radio" name="President" value="Ali"><span class="symbol">🌟</span>Ali</label><br>
+        <label><input type="radio" name="President" value="Sara"><span class="symbol">🏆</span>Sara</label><br>
+        <label><input type="radio" name="President" value="Hamza"><span class="symbol">🦁</span>Hamza</label>
+      </div>
+
+      <div class="category">
+        <h3>Head Boy</h3>
+        <label><input type="radio" name="Head Boy" value="Ahmed"> Ahmed</label><br>
+        <label><input type="radio" name="Head Boy" value="Bilal"> Bilal</label><br>
+        <label><input type="radio" name="Head Boy" value="Danish"> Danish</label>
+      </div>
+
+      <div class="category">
+        <h3>Head Girl</h3>
+        <label><input type="radio" name="Head Girl" value="Ayesha"> Ayesha</label><br>
+        <label><input type="radio" name="Head Girl" value="Hina"> Hina</label><br>
+        <label><input type="radio" name="Head Girl" value="Maryam"> Maryam</label>
+      </div>
+
+      <div class="category">
+        <h3>Yellow House Captain</h3>
+        <label><input type="radio" name="Yellow House Captain" value="Usman"> Usman</label><br>
+        <label><input type="radio" name="Yellow House Captain" value="Owais"> Owais</label>
+      </div>
+
+      <div class="category">
+        <h3>Red House Captain</h3>
+        <label><input type="radio" name="Red House Captain" value="Zara"> Zara</label><br>
+        <label><input type="radio" name="Red House Captain" value="Iqra"> Iqra</label>
+      </div>
+
+      <div class="category">
+        <h3>Green House Captain</h3>
+        <label><input type="radio" name="Green House Captain" value="Aliya"> Aliya</label><br>
+        <label><input type="radio" name="Green House Captain" value="Noor"> Noor</label>
+      </div>
+
+      <div class="category">
+        <h3>Blue House Captain</h3>
+        <label><input type="radio" name="Blue House Captain" value="Fatima"> Fatima</label><br>
+        <label><input type="radio" name="Blue House Captain" value="Hira"> Hira</label>
+      </div>
+
+      <div class="category">
+        <h3>Prefect</h3>
+        <label><input type="radio" name="Prefect" value="Kashif"> Kashif</label><br>
+        <label><input type="radio" name="Prefect" value="Saad"> Saad</label><br>
+        <label><input type="radio" name="Prefect" value="Mona"> Mona</label><br>
+        <label><input type="radio" name="Prefect" value="Anam"> Anam</label>
+      </div>
+
+      <button type="button" onclick="castVote()">Cast Vote</button>
+    </form>
+
+    <!-- Download Button -->
+    <button id="downloadBtn" class="hidden" onclick="downloadCSV()">Download Results CSV</button>
+  </div>
+
+  <script>
+    const password = "0123";
+    let votingUnlocked = false;
+
+    let results = {
+      "President": {"Ali": 0, "Sara": 0, "Hamza": 0},
+      "Head Boy": {"Ahmed": 0, "Bilal": 0, "Danish": 0},
+      "Head Girl": {"Ayesha": 0, "Hina": 0, "Maryam": 0},
+      "Yellow House Captain": {"Usman": 0, "Owais": 0},
+      "Red House Captain": {"Zara": 0, "Iqra": 0},
+      "Green House Captain": {"Aliya": 0, "Noor": 0},
+      "Blue House Captain": {"Fatima": 0, "Hira": 0},
+      "Prefect": {"Kashif": 0, "Saad": 0, "Mona": 0, "Anam": 0}
+    };
+
+    function unlockVoting() {
+      const entered = document.getElementById("passwordInput").value;
+      if (entered === password) {
+        votingUnlocked = true;
+        document.getElementById("votingForm").classList.remove("hidden");
+        document.getElementById("passwordSection").classList.add("hidden");
+        document.getElementById("passwordInput").value = "";
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+
+    function castVote() {
+      if (!votingUnlocked) {
+        alert("Voting is locked! Teacher must enter password.");
+        return;
+      }
+
+      const form = document.getElementById("votingForm");
+      const data = new FormData(form);
+
+      for (let [category, candidate] of data.entries()) {
+        results[category][candidate]++;
+      }
+
+      alert("THANK YOU. NEXT STUDENT PLEASE.");
+
+      // Lock voting again until teacher re-enters password
+      votingUnlocked = false;
+      form.reset();
+      document.getElementById("votingForm").classList.add("hidden");
+      document.getElementById("passwordSection").classList.remove("hidden");
+
+      // Always show download button for teacher
+      document.getElementById("downloadBtn").classList.remove("hidden");
+    }
+
+    function downloadCSV() {
+      let csv = "Category,Candidate,Votes\n";
+      for (let category in results) {
+        for (let candidate in results[category]) {
+          csv += `${category},${candidate},${results[category][candidate]}\n`;
+        }
+      }
+
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.setAttribute("hidden", "");
+      a.href = url;
+      a.download = "voting_results.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+
+</body>
+</html>
