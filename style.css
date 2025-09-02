@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url("school_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  color: white;
+  overflow-y: scroll;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo {
+  height: 70px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.category {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.category h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #444;
+  color: yellow;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  position: sticky;
+  bottom: 0;
+}
